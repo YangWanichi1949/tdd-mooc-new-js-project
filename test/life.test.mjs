@@ -14,4 +14,20 @@ describe("nextGeneration", () => {
       ])
     ).toEqual([]);
   });
+
+  test("block stays the same", () => {
+    expect(
+      nextGeneration([
+        [0, 0],
+        [1, 0],
+        [0, 1],
+        [1, 1],
+      ])
+    ).toEqual([
+      [0, 0],
+      [1, 0],
+      [0, 1],
+      [1, 1],
+    ]);
+  });
 });
