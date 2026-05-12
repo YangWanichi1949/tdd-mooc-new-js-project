@@ -1,9 +1,12 @@
-import { describe, test } from "vitest";
-import { expect } from "chai";
-import { sum } from "../src/example.mjs";
+import { describe, expect, test } from "vitest";
+import { parseRLE } from "../src/parser.mjs";
 
-describe("Example test fixture", () => {
-  test("Example test", () => {
-    expect(sum(1, 2)).to.equal(3);
+describe("parseRLE", () => {
+  test("parses one live cell", () => {
+    expect(parseRLE("o!")).toEqual([[0, 0]]);
+  });
+
+  test("ignores dead cells", () => {
+    expect(parseRLE("b!")).toEqual([]);
   });
 });

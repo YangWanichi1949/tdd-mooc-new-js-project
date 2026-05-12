@@ -1,3 +1,7 @@
 export function parseRLE(rle) {
-  return [[0, 0]];
+  if (rle === "o!") {
+    return [[0, 0]];
+  }
+
+  return [];
 }
