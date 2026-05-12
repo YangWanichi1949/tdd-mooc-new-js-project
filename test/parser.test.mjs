@@ -19,4 +19,12 @@ describe("parseRLE", () => {
       [1, 1],
     ]);
   });
+
+  test("parses repeated live cells", () => {
+    expect(parseRLE("3o!")).toEqual([
+      [0, 0],
+      [1, 0],
+      [2, 0],
+    ]);
+  });
 });

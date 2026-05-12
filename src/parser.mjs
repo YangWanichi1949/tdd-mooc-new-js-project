@@ -2,20 +2,33 @@ export function parseRLE(rle) {
   const cells = [];
   let x = 0;
   let y = 0;
+  let count = "";
 
   for (const char of rle) {
+    if (isDigit(char)) {
+      count += char;
+    }
+
     if (char === "o") {
-      cells.push([x, y]);
-      x += 1;
+      const repetitions = numberOrOne(count);
+
+      for (let i = 0; i < repetitions; i++) {
+        cells.push([x, y]);
+        x += 1;
+      }
+
+      count = "";
     }
 
     if (char === "b") {
-      x += 1;
+      x += numberOrOne(count);
+      count = "";
     }
 
     if (char === "$") {
       x = 0;
-      y += 1;
+      y += numberOrOne(count);
+      count = "";
     }
 
     if (char === "!") {
@@ -24,4 +37,12 @@ export function parseRLE(rle) {
   }
 
   return cells;
+}
+
+function isDigit(char) {
+  return char >= "0" && char <= "9";
+}
+
+function numberOrOne(count) {
+  return count === "" ? 1 : Number(count);
 }
