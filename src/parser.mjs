@@ -1,4 +1,8 @@
 export function parseRLE(rle) {
+  rle = rle
+    .split("\n")
+    .filter((line) => !line.startsWith("#") && !line.startsWith("x"))
+    .join("");
   const cells = [];
   let x = 0;
   let y = 0;
