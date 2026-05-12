@@ -30,4 +30,18 @@ describe("nextGeneration", () => {
       [1, 1],
     ]);
   });
+
+  test("blinker oscillates", () => {
+    expect(
+      nextGeneration([
+        [1, 0],
+        [1, 1],
+        [1, 2],
+      ])
+    ).toEqual([
+      [0, 1],
+      [1, 1],
+      [2, 1],
+    ]);
+  });
 });
